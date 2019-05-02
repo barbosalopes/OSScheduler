@@ -62,8 +62,12 @@ namespace OSScheduler.DataStructure
         {
             QueueableProcess toReturn = Current;
             Current.Execute(Quantum);
-            Current = Current.NextProcess;
             return toReturn;
+        }
+
+        public void StepOver()
+        {
+            Current = Current.NextProcess;
         }
     }
 }
