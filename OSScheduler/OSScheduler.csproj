@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Process.cs" />
+    <Compile Include="Controller\Processable.cs" />
+    <Compile Include="DataStructure\CircularQueue.cs" />
+    <Compile Include="DataStructure\QueueableProcess.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
