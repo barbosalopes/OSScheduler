@@ -9,6 +9,12 @@ namespace OSScheduler.Controller
 {
     class Process : Processable, IComparable
     {
+        public Process(int ExecutionTime, int Priority)
+        {
+            this.ExecutionTime = ExecutionTime;
+            this.Priority = Priority;
+        }
+
         private int Priority;
         private int ExecutionTime;
 
@@ -39,10 +45,20 @@ namespace OSScheduler.Controller
             ExecutionTime -= QuantumTime;
         }
 
+        public bool Finished()
+        {
+            return ExecutionTime == 0;
+        }
+
         public int CompareTo(object obj)
         {
             Process toCompare = (Process)obj;
             return toCompare.GetPriority() - GetPriority();
-        }   
+        }
+
+        public override string ToString()
+        {
+            return "Priority: " + Priority + "\nExecution Time:" + ExecutionTime;
+        }
     }
 }

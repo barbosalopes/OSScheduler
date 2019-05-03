@@ -9,6 +9,9 @@ namespace OSScheduler.DataStructure
 {
     class QueueableProcess : Process
     {
+        public QueueableProcess(int ExecutionTime, int Priority) : 
+            base(ExecutionTime, Priority) { }
+
         public QueueableProcess NextProcess { set; get; }
     }
 }

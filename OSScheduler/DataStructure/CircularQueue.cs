@@ -8,24 +8,27 @@ namespace OSScheduler.DataStructure
 {
     class CircularQueue
     {
-        private QueueableProcess Current { set; get; }
+        private QueueableProcess current { set; get; }
+        public QueueableProcess Current { get { return current; } }
         private QueueableProcess Aux { set; get; }
+        private int Quantum { set; get; }
 
-        public CircularQueue()
+        public CircularQueue(int Quantum)
         {
-            Aux = Current = null;
+            Aux = current = null;
+            this.Quantum = Quantum;
         }
 
         public void Insert(QueueableProcess toInsert)
         {
-            if (Current == null)
+            if (current == null)
             {
-                Current = toInsert;
-                Current.NextProcess = Current;
+                current = toInsert;
+                current.NextProcess = current;
                 return;
             }
 
-            Aux = Current;
+            Aux = current;
             while (toInsert.CompareTo(Aux) < 0 && toInsert.CompareTo(Aux.NextProcess) >= 0)
                 Aux = Aux.NextProcess;
             toInsert.NextProcess = Aux.NextProcess;
@@ -34,40 +37,68 @@ namespace OSScheduler.DataStructure
 
         public QueueableProcess Remove()
         {
-            if (Current == null)
+            if (current == null)
                 return null;
 
-            Aux = Current;
+            Aux = current;
             QueueableProcess toReturn;
 
-            while (!Aux.NextProcess.Equals(Current))
+            while (!Aux.NextProcess.Equals(current))
                 Aux = Aux.NextProcess;
-            if (Aux.Equals(Current))
+            if (Aux.Equals(current))
             {
-                toReturn = Current;
+                toReturn = current;
                 toReturn.NextProcess = null;
-                Aux = Current = null;
+                Aux = current = null;
             }
             else
             {
-                Aux.NextProcess = Current.NextProcess;
-                Current.NextProcess = null;
-                toReturn = Current;
+                Aux.NextProcess = current.NextProcess;
+                current.NextProcess = null;
+                toReturn = current;
             }
 
             return toReturn;
         }
             
-        public QueueableProcess Execute(int Quantum)
+        protected QueueableProcess ExecuteCurrentProcess()
         {
-            QueueableProcess toReturn = Current;
-            Current.Execute(Quantum);
+            QueueableProcess toReturn = current;
+            if(current != null) current.Execute(Quantum);
             return toReturn;
         }
 
-        public void StepOver()
+        protected void StepOver()
         {
-            Current = Current.NextProcess;
+            current = current.NextProcess;
+        }
+
+        public bool IsEmpty()
+        {
+            return current == null;
+        }
+
+        public void Execute()
+        {
+            if (IsEmpty()) return;
+
+            QueueableProcess Executed = ExecuteCurrentProcess();
+            if (Executed.Finished()) Remove();
+            if(!IsEmpty()) StepOver();
+        }
+        
+        public QueueableProcess[] ToArray()
+        {
+            Aux = Current;
+            List<QueueableProcess> toReturn = new List<QueueableProcess>();
+
+            while(Aux != null)
+            {
+                toReturn.Add(Aux);
+                Aux = Aux.NextProcess;
+            }
+
+            return toReturn.ToArray();
         }
     }
 }
