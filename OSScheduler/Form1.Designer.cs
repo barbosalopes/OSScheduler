@@ -34,14 +34,18 @@
             this.add = new System.Windows.Forms.Button();
             this.priority = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.quantum = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.execution_time)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priority)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quantum)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(15, 114);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 20);
             this.label1.TabIndex = 0;
@@ -49,23 +53,28 @@
             // 
             // execution_time
             // 
-            this.execution_time.Location = new System.Drawing.Point(16, 33);
+            this.execution_time.Location = new System.Drawing.Point(19, 138);
             this.execution_time.Name = "execution_time";
             this.execution_time.Size = new System.Drawing.Size(120, 26);
             this.execution_time.TabIndex = 1;
+            this.execution_time.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
             // 
             // output
             // 
             this.output.Enabled = false;
-            this.output.Location = new System.Drawing.Point(12, 154);
+            this.output.Location = new System.Drawing.Point(294, 12);
             this.output.Name = "output";
-            this.output.Size = new System.Drawing.Size(776, 88);
+            this.output.Size = new System.Drawing.Size(494, 382);
             this.output.TabIndex = 2;
             this.output.Text = "";
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(187, 65);
+            this.add.Location = new System.Drawing.Point(190, 170);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(75, 33);
             this.add.TabIndex = 3;
@@ -75,7 +84,7 @@
             // 
             // priority
             // 
-            this.priority.Location = new System.Drawing.Point(142, 33);
+            this.priority.Location = new System.Drawing.Point(145, 138);
             this.priority.Maximum = new decimal(new int[] {
             10,
             0,
@@ -83,22 +92,62 @@
             0});
             this.priority.Name = "priority";
             this.priority.Size = new System.Drawing.Size(120, 26);
-            this.priority.TabIndex = 5;
+            this.priority.TabIndex = 2;
+            this.priority.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(138, 9);
+            this.label2.Location = new System.Drawing.Point(141, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Priority";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Quantum";
+            // 
+            // quantum
+            // 
+            this.quantum.Location = new System.Drawing.Point(16, 35);
+            this.quantum.Name = "quantum";
+            this.quantum.Size = new System.Drawing.Size(120, 26);
+            this.quantum.TabIndex = 6;
+            this.quantum.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.quantum.ValueChanged += new System.EventHandler(this.quantum_ValueChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(190, 35);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 64);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Reset Queue";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 254);
+            this.ClientSize = new System.Drawing.Size(800, 406);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.quantum);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.priority);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.add);
@@ -109,6 +158,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.execution_time)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priority)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quantum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +172,9 @@
         private System.Windows.Forms.Button add;
         private System.Windows.Forms.NumericUpDown priority;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown quantum;
+        private System.Windows.Forms.Button button1;
     }
 }
 

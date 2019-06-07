@@ -54,7 +54,6 @@ namespace OSScheduler.DataStructure
             else
             {
                 Aux.NextProcess = current.NextProcess;
-                current.NextProcess = null;
                 toReturn = current;
             }
 
@@ -89,14 +88,16 @@ namespace OSScheduler.DataStructure
         
         public QueueableProcess[] ToArray()
         {
-            Aux = Current;
             List<QueueableProcess> toReturn = new List<QueueableProcess>();
+            if (IsEmpty()) return toReturn.ToArray();
 
-            while(Aux != null)
+            Aux = Current;
+
+            do
             {
                 toReturn.Add(Aux);
                 Aux = Aux.NextProcess;
-            }
+            } while (Aux != Current);
 
             return toReturn.ToArray();
         }

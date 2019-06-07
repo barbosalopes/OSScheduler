@@ -41,7 +41,7 @@ namespace OSScheduler.Controller
             if (QuantumTime > ExecutionTime)
                 QuantumTime = ExecutionTime;
 
-            Thread.Sleep(QuantumTime);
+            Thread.Sleep(QuantumTime * 1000);
             ExecutionTime -= QuantumTime;
         }
 
@@ -58,7 +58,7 @@ namespace OSScheduler.Controller
 
         public override string ToString()
         {
-            return "Priority: " + Priority + "\nExecution Time:" + ExecutionTime;
+            return "Priority: " + Priority + " | Execution Time:" + ExecutionTime + "\n";
         }
     }
 }
