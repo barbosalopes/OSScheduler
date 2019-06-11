@@ -23,6 +23,7 @@ namespace OSScheduler
             InitializeComponent();
             circularQueue = new CircularQueue(2);
             Thread T = new Thread(new ThreadStart(Run));
+            Thread T2 = new Thread(new ThreadStart(Run));
             T.Start();
 
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
@@ -41,16 +42,19 @@ namespace OSScheduler
                 StreamReader stream = new StreamReader(@"C:\Users\mateu\Desktop\TI.txt");
                 QueueableProcess queueableProcess = null;
 
-                int priority, cicleNumbers, executionTime;
+                int cod, priority, cicleNumbers, executionTime;
+                string name;
 
                 while ((line = stream.ReadLine()) != null)
                 {
                     string[] processParams = line.Split(';');
+                    cod = int.Parse(processParams[0]);
+                    name = processParams[1];
                     priority = int.Parse(processParams[2]);
                     cicleNumbers = int.Parse(processParams[3]);
                     executionTime = (int)quantum.Value * cicleNumbers;
 
-                    queueableProcess = new QueueableProcess(executionTime, priority);
+                    queueableProcess = new QueueableProcess(cod, name, executionTime, priority);
                     circularQueue.Insert(queueableProcess);
                 }
 
@@ -64,7 +68,7 @@ namespace OSScheduler
 
         private void button1_Click(object sender, EventArgs e)
         {
-            toInsert = new QueueableProcess((int)execution_time.Value, (int)priority.Value);
+            toInsert = new QueueableProcess(name.Text, (int)execution_time.Value, (int)priority.Value);
             circularQueue.Insert(toInsert);
 
             execution_time.Value = 60;
@@ -109,6 +113,12 @@ namespace OSScheduler
         private void quantum_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            QueueableProcess toRemove = new QueueableProcess(name_to_delete.Text, 0, 0);
+            circularQueue.Remove();
         }
     }
 }

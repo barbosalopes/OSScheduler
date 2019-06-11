@@ -59,6 +59,31 @@ namespace OSScheduler.DataStructure
 
             return toReturn;
         }
+
+        public QueueableProcess Remove(Type value)
+        {
+            if (current == null)
+                return null;
+
+            Aux = current;
+            QueueableProcess toReturn;
+
+            while (!Aux.NextProcess.Equals(value))
+                Aux = Aux.NextProcess;
+            if (Aux.Equals(current))
+            {
+                toReturn = current;
+                toReturn.NextProcess = null;
+                Aux = current = null;
+            }
+            else
+            {
+                Aux.NextProcess = current.NextProcess;
+                toReturn = current;
+            }
+
+            return toReturn;
+        }
             
         protected QueueableProcess ExecuteCurrentProcess()
         {

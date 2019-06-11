@@ -37,6 +37,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.quantum = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
+            this.name = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.name_to_delete = new System.Windows.Forms.TextBox();
+            this.delete = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.execution_time)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priority)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantum)).BeginInit();
@@ -45,15 +50,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 114);
+            this.label1.Location = new System.Drawing.Point(15, 268);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 20);
+            this.label1.Size = new System.Drawing.Size(117, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "ExecutionTime";
+            this.label1.Text = "Execution Time";
             // 
             // execution_time
             // 
-            this.execution_time.Location = new System.Drawing.Point(19, 138);
+            this.execution_time.Location = new System.Drawing.Point(19, 292);
             this.execution_time.Name = "execution_time";
             this.execution_time.Size = new System.Drawing.Size(120, 26);
             this.execution_time.TabIndex = 1;
@@ -74,7 +79,7 @@
             // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(190, 170);
+            this.add.Location = new System.Drawing.Point(190, 324);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(75, 33);
             this.add.TabIndex = 3;
@@ -84,7 +89,7 @@
             // 
             // priority
             // 
-            this.priority.Location = new System.Drawing.Point(145, 138);
+            this.priority.Location = new System.Drawing.Point(145, 292);
             this.priority.Maximum = new decimal(new int[] {
             10,
             0,
@@ -102,7 +107,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(141, 114);
+            this.label2.Location = new System.Drawing.Point(141, 268);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 20);
             this.label2.TabIndex = 4;
@@ -140,11 +145,58 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // name
+            // 
+            this.name.Location = new System.Drawing.Point(19, 239);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(246, 26);
+            this.name.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 216);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Name";
+            // 
+            // name_to_delete
+            // 
+            this.name_to_delete.Location = new System.Drawing.Point(19, 141);
+            this.name_to_delete.Name = "name_to_delete";
+            this.name_to_delete.Size = new System.Drawing.Size(246, 26);
+            this.name_to_delete.TabIndex = 10;
+            // 
+            // delete
+            // 
+            this.delete.Location = new System.Drawing.Point(190, 173);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(75, 33);
+            this.delete.TabIndex = 11;
+            this.delete.Text = "Delete";
+            this.delete.UseVisualStyleBackColor = true;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 118);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 20);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Name";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 406);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.delete);
+            this.Controls.Add(this.name_to_delete);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.name);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.quantum);
             this.Controls.Add(this.label3);
@@ -175,6 +227,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown quantum;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox name_to_delete;
+        private System.Windows.Forms.Button delete;
+        private System.Windows.Forms.Label label5;
     }
 }
 

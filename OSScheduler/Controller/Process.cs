@@ -9,15 +9,19 @@ namespace OSScheduler.Controller
 {
     class Process : Processable, IComparable
     {
-        public Process(int ExecutionTime, int Priority)
-        {
-            this.ExecutionTime = ExecutionTime;
-            this.Priority = Priority;
-        }
-
+        private int Cod;
+        private string Name;
         private int Priority;
         private int ExecutionTime;
 
+        public Process(int Cod, string Name, int ExecutionTime, int Priority)
+        {
+            this.Cod = Cod;
+            this.Name = Name;
+            this.ExecutionTime = ExecutionTime;
+            this.Priority = Priority;
+        }
+        
         public int GetPriority()
         {
             return Priority;
@@ -59,6 +63,12 @@ namespace OSScheduler.Controller
         public override string ToString()
         {
             return "Priority: " + Priority + " | Execution Time:" + ExecutionTime + "\n";
+        }
+
+        public override bool Equals(object obj)
+        {
+            Process toCompare = (Process)obj;
+            return Cod.Equals(toCompare.Cod);
         }
     }
 }
